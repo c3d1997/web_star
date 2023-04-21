@@ -4,6 +4,7 @@ const purgecss = require('gulp-purgecss') // 載入 gulp-purgecss 套件
 const postcss = require('gulp-postcss'); // 載入 gulp-postcss 套件
 const autoprefixer = require('autoprefixer'); // 載入 autoprefixer 套件
 
+
 gulp.task('sass', () => {
     return gulp
         .src('./scss/all.scss') // SCSS 主檔案路徑
@@ -25,4 +26,14 @@ gulp.task('purgecss', () => {
             content: ['index.html']
         }))
         .pipe(gulp.dest('./css')); // 編譯完成輸出路徑
+});
+
+gulp.task('web', function () {
+    return gulp.src('*.*', { read: false })
+        .pipe(gulp.dest('./css'))
+        .pipe(gulp.dest('./images'))
+        .pipe(gulp.dest('./scss'))
+        .pipe(gulp.dest('./plugin/js'))
+        .pipe(gulp.dest('./plugin/css'))
+        .pipe(gulp.dest('./js'))
 });

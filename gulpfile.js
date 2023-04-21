@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer'); // 載入 autoprefixer 套件
 
 gulp.task('sass', () => {
     return gulp
-        .src('./scss/all.scss') // SCSS 主檔案路徑
+        .src('./scss/main.scss') // SCSS 主檔案路徑
         .pipe(sass().on('error', sass.logError)) // 使用 gulp-sass 進行編譯\\
         .pipe(postcss([autoprefixer()])) // 將編譯完成的 CSS 做 PostCSS 處理
         .pipe(gulp.dest('./css')); // 編譯完成輸出路徑
@@ -21,7 +21,7 @@ gulp.task('watch', () => {
 // 移除沒用的CSS
 gulp.task('purgecss', () => {
     return gulp
-        .src('./scss/all.scss')
+        .src('./scss/main.scss')
         .pipe(purgecss({
             content: ['index.html']
         }))
